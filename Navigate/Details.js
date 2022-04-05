@@ -17,6 +17,7 @@ function DetailsScreen({ route,navigation }) {
  console.log('i am in route',route)
  // destructuring params
  const{id,name}=route.params
+ console.log('ddcdc',id,name)
 
 
  return (
@@ -26,7 +27,7 @@ function DetailsScreen({ route,navigation }) {
         <Text>{id}         {name}</Text>
         <Button
           title="Go to Details... again"
-          onPress={() => navigation.push('Details')}
+          onPress={() => navigation.push('Details',{id:35454,name:'vd'})}
         />
          <Button title="Go to Home" onPress={() => navigation.navigate('Home',{id:35454})} />
       <Button title="Go back" onPress={() => navigation.goBack()} />

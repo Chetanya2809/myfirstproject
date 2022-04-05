@@ -8,7 +8,7 @@ export default function HomeScreen({navigation,route}) {
 
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Home Screen</Text>
+        <Text>Home Sreen</Text>
       {route.params?<Text>{route.params.id}</Text>:<Text>{""}</Text>}
         <Text></Text>
         <Text></Text>
@@ -20,6 +20,7 @@ export default function HomeScreen({navigation,route}) {
             Go to details
         </Text>
         <Text>hiiiiii</Text>
+        <Text>ghhfghkj.gcjgkh,mj</Text>
         <Button
           title="Go to Home... again"
           onPress={() => navigation.push('Home')}
