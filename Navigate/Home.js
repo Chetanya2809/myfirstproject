@@ -19,6 +19,7 @@ export default function HomeScreen({navigation,route}) {
         onPress={()=>{navigation.navigate("Details",{id:1234,name:'chetanya'})}}>
             Go to details
         </Text>
+        <Text>hiiiiii</Text>
         <Button
           title="Go to Home... again"
           onPress={() => navigation.push('Home')}
