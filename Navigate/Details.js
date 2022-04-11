@@ -14,7 +14,7 @@ import {View, Text, Button } from 'react-native';
 // export default DetailsScreen;
 function DetailsScreen({ route,navigation }) {
   // extracting params through route as params are passed and stored in rotes
- console.log('i am in route',route)
+ console.log('i am in navigation',navigation)
  // destructuring params
  const{id,name}=route.params
  console.log('ddcdc',id,name)
@@ -24,16 +24,34 @@ function DetailsScreen({ route,navigation }) {
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Details Screen</Text>
         {/* simply displaying the params */}
-        <Text>{id}         {name}</Text>
-        <Button
+        <Text>{id}{name}</Text>
+        {/* <Button
           title="Go to Details... again"
-          onPress={() => navigation.push('Details',{id:35454,name:'vd'})}
-        />
+          onPress={() =>{ 
+            navigation.push('Details',{id,name})}}
+        /> */}
+        <Button
+        title="Go to Details... again"
+        onPress={() =>{
+          navigation.push('Details', {
+            id: Math.floor(Math.random() * 100),
+          })
+          
+        }
+          
+        }
+      />
          <Button title="Go to Home" onPress={() => navigation.navigate('Home',{id:35454})} />
       <Button title="Go back" onPress={() => navigation.goBack()} />
       <Button
         title="Go back to first screen in stack"
         onPress={() => navigation.popToTop()}
+      />
+      <Button
+      title='Go to nested components'
+      onPress={()=>{
+        navigation.navigate('Nest');
+      }}
       />
       </View>
     );
