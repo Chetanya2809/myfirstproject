@@ -69,6 +69,7 @@ export default function Wishlist() {
           ,borderRadius:10
           }}>
               <Text style={{color:'white'}}>{'Add to Bag'}</Text>
+              <Text>dfjghjkhgfdfxghjkhgfdzxghjkl</Text>
             </TouchableOpacity>
           </View>
         </View>
