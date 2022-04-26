@@ -7,7 +7,7 @@ import TopTabNavigation from '../TopTabNavigation';
 function HomeScreen({navigation}) {
   return (
     <View style={{flex: 1}}>
-      <TopTabNavigation navigation={navigation} header={'home'}/>
+      <TopTabNavigation navigation={navigation} header={'home'} />
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
         <Text>Home!</Text>
       </View>
@@ -18,10 +18,11 @@ function HomeScreen({navigation}) {
 function SettingsScreen({navigation}) {
   return (
     <View style={{flex: 1}}>
-      <TopTabNavigation navigation={navigation} header={'Settings'}/>
+      <TopTabNavigation navigation={navigation} header={'Settings'} />
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
         <Text>Settings!</Text>
       </View>
+
     </View>
   );
 }
@@ -29,7 +30,7 @@ function SettingsScreen({navigation}) {
 function Notes({navigation}) {
   return (
     <View style={{flex: 1}}>
-      <TopTabNavigation navigation={navigation} header={'Notes'}/>
+      <TopTabNavigation navigation={navigation} header={'Notes'} />
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
         <Text>Notes!</Text>
       </View>
@@ -38,19 +39,17 @@ function Notes({navigation}) {
 }
 
 const Tab = createMaterialBottomTabNavigator();
-export default function App() {
+
+export default function MaterialBottomTab() {
   return (
     <View style={{flex: 1}}>
       <NavigationContainer>
-        <Tab.Navigator 
-        shifting={true}
-        activeColor='black'
-        >
+        <Tab.Navigator shifting={true} activeColor="black">
           <Tab.Screen
             name="Home"
             component={HomeScreen}
             options={{
-                tabBarColor:'orange',
+              tabBarColor: 'orange',
               tabBarIcon: ({focused, color, size}) => {
                 return (
                   <Image
@@ -68,7 +67,6 @@ export default function App() {
                 );
               },
               tabBarLabel: 'MyHome',
-              
             }}
           />
 
@@ -76,7 +74,7 @@ export default function App() {
             name="Settings"
             component={SettingsScreen}
             options={{
-            tabBarColor:'cornflowerblue',
+              tabBarColor: 'cornflowerblue',
               tabBarIcon: ({focused}) => {
                 return (
                   <Image
@@ -100,7 +98,7 @@ export default function App() {
             name="Notes"
             component={Notes}
             options={{
-                tabBarColor:'coral',
+              tabBarColor: 'coral',
               tabBarIcon: ({focused}) => {
                 return (
                   <Image

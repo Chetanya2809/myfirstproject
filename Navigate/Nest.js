@@ -10,7 +10,6 @@ const Drawer = createDrawerNavigator();
 function Nest(){
     return(
         <Drawer.Navigator>
-      {/* <Drawer.Screen name="Home" component={Home} /> */}
       <Drawer.Screen name="Profile" component={Profile} />
       <Drawer.Screen name="Settings" component={Settings} />
 
