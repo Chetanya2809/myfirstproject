@@ -5,20 +5,21 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
+  StyleSheet,
+  Dimensions,
 } from 'react-native';
 import React from 'react';
-import {NavigationContainer, useNavigation} from '@react-navigation/native';
+
+const {height, width} = Dimensions.get('screen');
 
 export default function Bag({navigation}) {
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          paddingHorizontal: 20,
-        }}>
-        <TouchableOpacity onPress={() => {navigation.goBack()}}>
+    <SafeAreaView style={styles.safearea}>
+      <View style={styles.mainview}>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.goBack();
+          }}>
           <Image
             style={{height: 20, width: 20}}
             source={require('../src/assests/Images/cross.png')}
@@ -30,46 +31,68 @@ export default function Bag({navigation}) {
         />
       </View>
       <ScrollView>
-        <Text
-          style={{
-            fontSize: 20,
-            fontWeight: 'bold',
-            marginHorizontal: 10,
-            marginVertical: 5,
-          }}>
-          Bag
-        </Text>
+        <Text style={styles.bagtext}>Bag</Text>
         <Image
-          style={{width: '100%', height: 100}}
+          style={styles.hdfc}
           source={require('../src/assests/Images/HDFC.webp')}
         />
-        <View
-          style={{
-            backgroundColor: '#c9d9e090',
-            justifyContent: 'center',
-            alignItems: 'center',
-            height: 560,
-          }}>
-          <View
-            style={{
-              height: 70,
-              width: 70,
-              borderWidth: 3,
-              borderRadius: 50,
-              justifyContent: 'center',
-              alignItems: 'center',
-              backgroundColor: '#c9d9e0',
-            }}>
-            <Image
-              style={{height: 35, width: 35}}
-              source={require('../src/assests/Images/shopbag.png')}
-            />
+        <View style={styles.innerview}>
+          <View style={styles.innerview1}>
+            <View style={styles.roundview}>
+              <Image
+                style={{height: 35, width: 35}}
+                source={require('../src/assests/Images/shopbag.png')}
+              />
+            </View>
+            <Text style={styles.emptytext}>Your bag is empty</Text>
           </View>
-          <Text style={{fontWeight: 'bold', marginTop: 10, fontSize: 20}}>
-            Your bag is empty
-          </Text>
         </View>
       </ScrollView>
     </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  safearea: {
+    flex: 1,
+  },
+  mainview: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 20,
+    paddingVertical: Platform.OS === 'ios' ? 0 : 15,
+  },
+  bagtext: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginHorizontal: 10,
+    marginVertical: Platform.OS === 'ios' ? 10 : 0,
+  },
+  hdfc: {
+    width: '100%',
+    height: 100,
+    marginVertical: Platform.OS === 'ios' ? 0 : 10,
+  },
+  innerview: {
+    backgroundColor: '#c9d9e090',
+    marginTop: Platform.OS === 'ios' ? 10 : 0,
+    height: height / 1,
+  },
+  roundview: {
+    height: 70,
+    width: 70,
+    borderWidth: 3,
+    borderRadius: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  emptytext: {
+    fontWeight: 'bold',
+    fontSize: 20,
+  },
+  innerview1: {
+    marginTop: 200,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});

@@ -1,12 +1,16 @@
-import {StyleSheet, Dimensions, Platform} from 'react-native';
-
+import {StyleSheet, Platform, Dimensions} from 'react-native';
+const {height, width} = Dimensions.get('screen');
 const styles = StyleSheet.create({
+  safeview: {
+    backgroundColor: '#c9d9e090',
+    flex: 1,
+  },
   main1: {
     flexDirection: 'row',
-    height:40,
+    height: Platform.OS === 'ios' ? 50 : 55,
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal:20
+    paddingHorizontal: 20,
   },
   image1: {
     height: 20,
@@ -18,9 +22,9 @@ const styles = StyleSheet.create({
   },
   text: {
     fontWeight: 'bold',
-    letterSpacing:2,
+    letterSpacing: 2,
     fontSize: 20,
-  marginRight:53
+    marginRight: 60,
   },
   inp: {
     borderRadius: 8,
@@ -28,20 +32,20 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   inpview: {
-    padding: Platform.OS==='ios'?10:0,
+    padding: Platform.OS === 'ios' ? 10 : 0,
     flexDirection: 'row',
     borderWidth: 1,
     borderRadius: 10,
     margin: 10,
     backgroundColor: 'white',
     borderColor: 'white',
-    alignItems:'center'
+    alignItems: 'center',
   },
   search: {
     height: 20,
     width: 20,
-    alignSelf:'center',
-    marginStart:Platform.OS==='ios'? 5 :10
+    alignSelf: 'center',
+    marginStart: Platform.OS === 'ios' ? 5 : 10,
   },
   images: {
     height: 80,
@@ -62,7 +66,7 @@ const styles = StyleSheet.create({
     maxWidth: 52,
   },
   Image1: {
-    height: 450,
+    height: height / 1.88,
     width: '100%',
   },
   off1: {
@@ -72,6 +76,15 @@ const styles = StyleSheet.create({
   trendimage: {
     height: 100,
     width: '100%',
+  },
+  slider1: {
+    height: 100,
+    width: '100%',
+  },
+  slider2: {
+    height: height / 3.4,
+    width: width / 1,
+    backgroundColor: 'white',
   },
 });
 

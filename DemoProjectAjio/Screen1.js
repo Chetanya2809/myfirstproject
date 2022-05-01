@@ -2,6 +2,7 @@ import {
   View,
   Text,
   FlatList,
+  Button,
   Image,
   SafeAreaView,
   Dimensions,
@@ -39,13 +40,20 @@ export default function Wishlist({navigation}) {
   }, []);
 
   const _onEndReached = () => {
-    console.log('val', val);
     return axios.get(`https://fakestoreapi.com/products`).then(response => {
       console.log('second', response);
       setdata([...data, ...response.data.slice(val, val + 6)]);
       console.log('dfxgchjkvbkl', data);
       setdata1(val + 6);
     });
+  };
+
+  const listempty = () => {
+    return (
+      <View style={styles.emptyview}>
+        <Text style={styles.emptyviewtext}> Loading...</Text>
+      </View>
+    );
   };
 
   const keyExtractor = item => item.id;
@@ -65,18 +73,6 @@ export default function Wishlist({navigation}) {
           {item.title}
         </Text>
         <Text>{`$ ${item.price}`} </Text>
-        <View style={styles.blockview}>
-          <TouchableOpacity style={styles.touch1}>
-            <Image
-              source={require('../src/assests/Images/delete.png')}
-              resizeMode={'contain'}
-              style={styles.dltimage}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.touch2}>
-            <Text style={styles.touch2text}>{'Add to Bag'}</Text>
-          </TouchableOpacity>
-        </View>
       </View>
     );
   };
@@ -103,16 +99,13 @@ export default function Wishlist({navigation}) {
   return (
     <SafeAreaView style={styles.maincontainer}>
       <View style={styles.mainview}>
-        <Text style={styles.mainviewtext1}>Wishlist</Text>
         <TouchableOpacity
           onPress={() => {
-            flatref.current.scrollToIndex({
-              index: 0,
-            });
+            navigation.goBack();
           }}>
           <Image
             style={styles.uparrow}
-            source={require('../src/assests/Images/up-arrow.png')}
+            source={require('../src/assests/Images/back.png')}
           />
         </TouchableOpacity>
       </View>
@@ -156,10 +149,10 @@ const styles = StyleSheet.create({
     letterSpacing: 2,
   },
   rendermainview: {
-    height: height / 2.6,
+    height: height / 3.0,
     width: width * 0.45,
     marginHorizontal: 10,
-    marginVertical: 3,
+    // marginVertical: 3,
   },
   image1: {
     height: 220,

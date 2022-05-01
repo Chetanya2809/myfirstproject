@@ -8,78 +8,102 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import React, {useState, useRef} from 'react';
+import React, {useRef, useEffect} from 'react';
 import styles from '../MainStyleSheet/HomeStyleSheet';
 import HomeHeader from './HeaderHome';
 import {SliderBox} from 'react-native-image-slider-box';
 import SliderImages from './SliderImages';
+import {useNavigation} from '@react-navigation/native';
 
-function HomeScreen({navigation}) {
+function HomeScreen() {
+  const navigation = useNavigation();
   const data = [
     {
       key: require('../src/assests/Images/luxe.png'),
+      navig: '',
     },
     {
       key: require('../src/assests/Images/men.jpeg'),
       text: 'MEN',
+      navig: 'Men',
     },
     {
       key: require('../src/assests/Images/women.jpeg'),
       text: 'WOMEN',
+      navig: 'Women',
     },
     {
       key: require('../src/assests/Images/child.jpeg'),
       text: 'KIDS',
+      navig: 'Kids',
     },
     {
       key: require('../src/assests/Images/jewel.jpeg'),
       text: 'JEWELLERY',
+      navig: 'Jewellery',
     },
     {
       key: require('../src/assests/Images/footwear.jpeg'),
       text: 'FOOTWEAR',
+      navig: 'Footwear',
     },
     {
       key: require('../src/assests/Images/accesories.jpeg'),
       text: 'ACCESSORIES',
+      navig: '',
     },
     {
       key: require('../src/assests/Images/bedsheet.jpeg'),
       text: 'HOME',
+      navig: '',
     },
     {
       key: require('../src/assests/Images/watch.jpeg'),
       text: 'WATCHES',
+      navig: '',
     },
   ];
 
+  const scrollRef = useRef();
+  useEffect(() => {
+    return navigation.addListener('tabPress', e => {
+      scrollRef.current.scrollTo({y: 0});
+    });
+  });
 
   const __renderItem = ({item}) => {
     return (
-        <TouchableOpacity>
-          <Image style={{width: 165, height: 220}} source={item} />
-        </TouchableOpacity>
+      <TouchableOpacity>
+        <Image style={{width: 165, height: 220}} source={item} />
+      </TouchableOpacity>
     );
   };
 
   const _renderItem = ({item}) => {
     return (
-        <TouchableOpacity>
-          <ImageBackground style={{width: 65, height: 80}} source={item.key}>
-            {item.text ? (
-              <View style={styles.imgtextview}>
-                <Text style={styles.imagetext}>{item.text}</Text>
-              </View>
-            ) : null}
-          </ImageBackground>
-        </TouchableOpacity>
-    ); 
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate(item.navig);
+        }}
+        activeOpacity={0.8}>
+        <ImageBackground style={{width: 65, height: 80}} source={item.key}>
+          {item.text ? (
+            <View style={styles.imgtextview}>
+              <Text style={styles.imagetext}>{item.text}</Text>
+            </View>
+          ) : null}
+        </ImageBackground>
+      </TouchableOpacity>
+    );
   };
 
   return (
-    <SafeAreaView style={{backgroundColor: '#c9d9e090', flex: 1}}>
-      <HomeHeader name={'AJIO'} navigation = {navigation}/>
-      <ScrollView showsVerticalScrollIndicator={false} bounces={false}>
+    <SafeAreaView style={styles.safeview}>
+      <HomeHeader name={'AJIO'} navigation={navigation} />
+      <ScrollView
+        ref={scrollRef}
+        showsVerticalScrollIndicator={false}
+        bounces={false}>
         <FlatList
           horizontal
           data={data}
@@ -87,16 +111,11 @@ function HomeScreen({navigation}) {
           bounces={false}
           showsHorizontalScrollIndicator={false}
         />
-        {/* <Carousel
-              ref={(c) => { const _carousel = c; }}
-              data={data}
-              renderItem={_renderItem}
-              sliderWidth={350}
-              itemWidth={60}
-              initialNumToRender={1}
 
-        /> */}
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('Screen1');
+          }}>
           <Image
             style={styles.Image1}
             source={require('../src/assests/Images/Image1.webp')}
@@ -110,7 +129,7 @@ function HomeScreen({navigation}) {
         </TouchableOpacity>
 
         <SliderBox
-          style={{height: 100, width: '100%'}}
+          style={styles.slider1}
           sliderBoxHeight={500}
           autoplay={true}
           circleLoop={true}
@@ -129,7 +148,7 @@ function HomeScreen({navigation}) {
         />
         <SliderBox
           resizeMode={'contain'}
-          style={{height: 250, width: '100%', backgroundColor: 'white'}}
+          style={styles.slider2}
           sliderBoxHeight={500}
           autoplay={true}
           circleLoop={true}
@@ -159,7 +178,7 @@ function HomeScreen({navigation}) {
         />
 
         <FlatList
-        bounces={false}
+          bounces={false}
           horizontal
           data={SliderImages.images2}
           renderItem={__renderItem}
