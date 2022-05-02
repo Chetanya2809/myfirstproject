@@ -27,8 +27,6 @@ export default function Account() {
 
   return (
     <View style={styles.container}>
-      {/* <KeyboardAvoidingView behavior="padding" style={{flex:1}}> */}
-
       <Modal style={{}} animationType="slide" visible={modalVisible}>
         <KeyboardAwareScrollView>
           <ImageBackground
@@ -263,7 +261,6 @@ export default function Account() {
           </Text>
         </View>
       </ScrollView>
-      {/* </KeyboardAvoidingView> */}
     </View>
   );
 }

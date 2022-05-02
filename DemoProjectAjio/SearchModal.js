@@ -11,6 +11,7 @@ import React, {useState} from 'react';
 import Modal from 'react-native-modal';
 
 export default function SearchModal(props) {
+  console.log('propsdfxgfchvjbjn', props);
   const data = ['man', 'women', 'cap', 'Winter - Wear', 'Shoes', 'Jewellery'];
 
   const renderItem = ({item}) => {
@@ -116,7 +117,10 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     left: 10,
   },
-  cross:{
-    height: 20, width: 20, left: 2, marginTop: 3
-  }
+  cross: {
+    height: 20,
+    width: 20,
+    left: 2,
+    marginTop: 3,
+  },
 });

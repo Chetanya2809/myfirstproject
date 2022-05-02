@@ -30,24 +30,24 @@ export default function Bag({navigation}) {
           source={require('../src/assests/Images/love.png')}
         />
       </View>
-      <ScrollView>
-        <Text style={styles.bagtext}>Bag</Text>
-        <Image
-          style={styles.hdfc}
-          source={require('../src/assests/Images/HDFC.webp')}
-        />
-        <View style={styles.innerview}>
-          <View style={styles.innerview1}>
-            <View style={styles.roundview}>
-              <Image
-                style={{height: 35, width: 35}}
-                source={require('../src/assests/Images/shopbag.png')}
-              />
-            </View>
-            <Text style={styles.emptytext}>Your bag is empty</Text>
+      {/* <ScrollView> */}
+      <Text style={styles.bagtext}>Bag</Text>
+      <Image
+        style={styles.hdfc}
+        source={require('../src/assests/Images/HDFC.webp')}
+      />
+      <View style={styles.innerview}>
+        <View style={styles.innerview1}>
+          <View style={styles.roundview}>
+            <Image
+              style={{height: 35, width: 35}}
+              source={require('../src/assests/Images/shopbag.png')}
+            />
           </View>
+          <Text style={styles.emptytext}>Your bag is empty</Text>
         </View>
-      </ScrollView>
+      </View>
+      {/* </ScrollView> */}
     </SafeAreaView>
   );
 }

@@ -14,6 +14,7 @@ import HomeHeader from './HeaderHome';
 import {SliderBox} from 'react-native-image-slider-box';
 import SliderImages from './SliderImages';
 import {useNavigation} from '@react-navigation/native';
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 
 function HomeScreen() {
   const navigation = useNavigation();
@@ -67,7 +68,7 @@ function HomeScreen() {
   const scrollRef = useRef();
   useEffect(() => {
     return navigation.addListener('tabPress', e => {
-      scrollRef.current.scrollTo({y: 0});
+      // scrollRef.current.scrollTo({y: 0});
     });
   });
 

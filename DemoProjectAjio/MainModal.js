@@ -7,10 +7,12 @@ import {
   StatusBar,
   StyleSheet,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import Modal from 'react-native-modal';
+import SearchModal from './SearchModal';
 
-function MainModal(props) {
+function MainModal(props, {navigation}) {
+  const [visibleModal1, setVisibleModal1] = useState(false);
   const data = [
     {
       image: require('../src/assests/Images/women.png'),
@@ -118,7 +120,7 @@ function MainModal(props) {
                 source={require('../src/assests/Images/cross.png')}
               />
             </TouchableOpacity>
-            <Text style={{fontSize:20,marginLeft:30}}>AJIO</Text>
+            <Text style={{fontSize: 20, marginLeft: 30}}>AJIO</Text>
             <View style={{flexDirection: 'row'}}>
               <TouchableOpacity
                 onPress={() => {
@@ -129,12 +131,24 @@ function MainModal(props) {
                   source={require('../src/assests/Images/lighthome.png')}
                 />
               </TouchableOpacity>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  return (
+                    <SearchModal
+                      visibleModal1={visibleModal1}
+                      setVisibleModal1={setVisibleModal1}
+                    />
+                  );
+                }}>
                 <Image
                   style={{height: 22, width: 22, marginLeft: 5}}
                   source={require('../src/assests/Images/Search.png')}
                 />
               </TouchableOpacity>
+              {/* <SearchModal
+          ={visibleModal1}
+          setVisibleModal1={setVisibleModal1}
+        /> */}
             </View>
           </View>
         </View>
