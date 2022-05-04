@@ -12,7 +12,8 @@ import Modal from 'react-native-modal';
 import SearchModal from './SearchModal';
 
 function MainModal(props, {navigation}) {
-  const [visibleModal1, setVisibleModal1] = useState(false);
+  // const [visibleModal1, setVisibleModal1] = useState(false);
+  const [searchVis, setSearchVis] = useState(false);
   const data = [
     {
       image: require('../src/assests/Images/women.png'),
@@ -133,22 +134,14 @@ function MainModal(props, {navigation}) {
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => {
-                  return (
-                    <SearchModal
-                      visibleModal1={visibleModal1}
-                      setVisibleModal1={setVisibleModal1}
-                    />
-                  );
+                  console.log('clicked');
+                  setSearchVis(!searchVis);
                 }}>
                 <Image
                   style={{height: 22, width: 22, marginLeft: 5}}
                   source={require('../src/assests/Images/Search.png')}
                 />
               </TouchableOpacity>
-              {/* <SearchModal
-          ={visibleModal1}
-          setVisibleModal1={setVisibleModal1}
-        /> */}
             </View>
           </View>
         </View>
@@ -156,6 +149,10 @@ function MainModal(props, {navigation}) {
         <View>
           <FlatList bounces={false} data={data} renderItem={_renderItem} />
         </View>
+        <SearchModal
+          visibleModal1={searchVis}
+          setVisibleModal1={setSearchVis}
+        />
       </Modal>
     </View>
   );

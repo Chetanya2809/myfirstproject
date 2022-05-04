@@ -11,9 +11,10 @@ import {
 } from 'react-native';
 import React, {useState, useEffect, useRef} from 'react';
 import axios from 'axios';
-
+import ContentLoader, { Rect, Circle } from 'react-content-loader/native'
 const {height, width} = Dimensions.get('screen');
 
+const tempArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10 , 12, 12, 13]
 export default function Wishlist({navigation}) {
   const [data, setdata] = useState([]);
   const [val, setdata1] = useState(6);
@@ -49,6 +50,15 @@ export default function Wishlist({navigation}) {
   };
 
   const keyExtractor = item => item.id;
+
+ const _ListEmptyComponent=()=>{
+   return(
+    tempArr.map(()=><ContentLoader viewBox="0 0 380 70">
+    <Rect x="30" y="17" rx="4" ry="4" width="300" height="13" />
+    <Rect x="30" y="40" rx="3" ry="3" width="250" height="10" />
+  </ContentLoader>)
+    )
+ }
 
   const _renderItem = ({item}) => {
     return (
@@ -127,6 +137,7 @@ export default function Wishlist({navigation}) {
         onEndReached={_onEndReached}
         keyExtractor={keyExtractor}
         ListFooterComponent={renderFooter}
+        ListEmptyComponent={_ListEmptyComponent}
       />
     </SafeAreaView>
   );

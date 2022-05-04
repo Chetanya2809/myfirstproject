@@ -14,7 +14,7 @@ import HomeHeader from './HeaderHome';
 import {SliderBox} from 'react-native-image-slider-box';
 import SliderImages from './SliderImages';
 import {useNavigation} from '@react-navigation/native';
-import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
+import ContentLoader, { Facebook } from 'react-content-loader'
 
 function HomeScreen() {
   const navigation = useNavigation();

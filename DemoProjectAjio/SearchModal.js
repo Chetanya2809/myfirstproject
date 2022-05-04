@@ -9,11 +9,12 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import Modal from 'react-native-modal';
+import {useNavigation} from '@react-navigation/native';
 
 export default function SearchModal(props) {
   console.log('propsdfxgfchvjbjn', props);
   const data = ['man', 'women', 'cap', 'Winter - Wear', 'Shoes', 'Jewellery'];
-
+  const navigation = useNavigation();
   const renderItem = ({item}) => {
     return (
       <View style={styles.render}>

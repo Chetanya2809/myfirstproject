@@ -7,11 +7,13 @@ import {
   Dimensions,
   TouchableOpacity,
 } from 'react-native';
-import React from 'react';
+import React,{useState} from 'react';
+import SearchModal from './SearchModal';
 
 const {height, width} = Dimensions.get('screen');
 
 export default function ItemView({navigation, route}) {
+  const [searchVis, setSearchVis] = useState(false);
   return (
     <View style={styles.container}>
       <View style={styles.headview}>
@@ -25,7 +27,10 @@ export default function ItemView({navigation, route}) {
           />
         </TouchableOpacity>
         <View style={styles.headview1}>
-          <TouchableOpacity>
+          <TouchableOpacity  onPress={() => {
+                  console.log('clicked');
+                  setSearchVis(!searchVis);
+                }}>
             <Image
               style={styles.image}
               source={require('../src/assests/Images/Search.png')}
@@ -74,6 +79,10 @@ export default function ItemView({navigation, route}) {
           </View>
         </View>
       </ScrollView>
+      <SearchModal
+          visibleModal1={searchVis}
+          setVisibleModal1={setSearchVis}
+        />
     </View>
   );
 }

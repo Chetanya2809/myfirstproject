@@ -14,8 +14,7 @@ const data = [
   {
     image: require('../src/assests/Images/kid1.jpeg'),
   },
-
-  {
+    {
     image: require('../src/assests/Images/kid2.jpeg'),
   },
   {
